@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<!--
+  ╔═══════════════════════════════════════════════════════════╗
+  ║  PORTFOLIO — one file, no build step.                       ║
+  ║  Customize: search for "EDIT:" and swap the text.           ║
+  ╚═══════════════════════════════════════════════════════════╝
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Aaron Van Sichem De Combe — Portfolio</title>
+<meta name="description" content="Portfolio of Aaron Van Sichem De Combe — programmer & Digital Arts and Entertainment student." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Spline+Sans:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --bg:      #0f0f13;
+    --bg-soft: #16161c;
+    --card:    #181820;
+    --line:    #2b2b36;
+    --text:    #ECECEF;
+    --muted:   #8d8d99;
+    --accent:  #FF7A59;   /* EDIT: change this hex to re-theme everything */
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Spline Sans', sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  /* soft atmospheric glow so the page isn't a flat slab */
+  body::before {
+    content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background:
+      radial-gradient(560px circle at 80% -8%, rgba(255,122,89,.13), transparent 60%),
+      radial-gradient(620px circle at -5% 105%, rgba(255,122,89,.06), transparent 55%);
+  }
+
+  ::selection { background:var(--accent); color:#000; }
+  a { color:inherit; }
+
+  .wrap { max-width:720px; margin:0 auto; padding:0 24px; }
+
+  .mono {
+    font-family:'JetBrains Mono', monospace;
+    font-size:.72rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--accent);
+  }
+
+  /* ───── HEADER / PROFILE ───── */
+  header { padding:80px 0 52px; text-align:center; }
+
+  .avatar {
+    width:118px; height:118px; border-radius:50%;
+    object-fit:cover; margin:0 auto 22px; display:block;
+    border:2px solid var(--line);
+    box-shadow:0 8px 30px rgba(0,0,0,.4);
+  }
+  .avatar-placeholder {
+    width:118px; height:118px; border-radius:50%;
+    margin:0 auto 22px; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(145deg, var(--accent), #c9512f);
+    color:#1a0d08; font-family:'Fraunces', serif; font-size:2.4rem; font-weight:600;
+  }
+
+  h1 {
+    font-family:'Fraunces', serif; font-weight:600;
+    font-size:2.3rem; letter-spacing:-.015em; line-height:1.1;
+  }
+  .role { color:var(--accent); font-size:.95rem; font-weight:500; margin-top:6px; }
+  .bio {
+    color:var(--muted); font-size:1.02rem;
+    margin:20px auto 0; max-width:560px; text-align:left;
+  }
+  .bio p { margin-bottom:12px; }
+  .bio p:last-child { margin-bottom:0; }
+
+  .links {
+    margin-top:26px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
+  }
+  .links a {
+    text-decoration:none; font-size:.9rem; font-weight:500;
+    padding:11px 22px; border-radius:100px;
+    transition:transform .15s ease, border-color .2s, color .2s, background .2s;
+  }
+  .links a:active { transform:scale(.97); }
+  .btn-primary { background:var(--accent); color:#1a0d08; }
+  .btn-primary:hover { background:#ff8f73; }
+  .btn-ghost { border:1px solid var(--line); color:var(--text); }
+  .btn-ghost:hover { border-color:var(--accent); color:var(--accent); }
+
+  /* ───── SECTIONS ───── */
+  section { padding:38px 0; }
+  .section-head { margin-bottom:24px; }
+  h2 {
+    font-family:'Fraunces', serif; font-weight:600;
+    font-size:1.5rem; margin-top:6px;
+  }
+
+  /* ───── PROJECT CARDS ───── */
+  .project {
+    position:relative;
+    background:var(--card); border:1px solid var(--line);
+    border-radius:14px; padding:24px 26px; margin-bottom:14px;
+    transition:border-color .22s, transform .16s;
+  }
+  .project:hover { border-color:var(--accent); transform:translateY(-3px); }
+  .project::before {
+    content:""; position:absolute; left:0; top:18px; bottom:18px; width:3px;
+    background:var(--accent); border-radius:3px;
+    opacity:.5; transition:opacity .22s;
+  }
+  .project:hover::before { opacity:1; }
+
+  .project h3 {
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.22rem;
+  }
+  .project .stack { margin-top:3px; }
+  .project p { color:var(--muted); font-size:.96rem; margin:10px 0 16px; }
+
+  .project img {
+    width:100%; border-radius:8px; margin:14px 0 0; display:block;
+  }
+
+  .project-links { display:flex; gap:16px; }
+  .project-links a {
+    text-decoration:none; font-size:.87rem; font-weight:500;
+    color:var(--text); display:inline-flex; align-items:center; gap:6px;
+    border-bottom:1px solid var(--accent); padding-bottom:1px;
+    transition:color .2s;
+  }
+  .project-links a:hover { color:var(--accent); }
+
+  /* embedded video (game trailer) */
+  .video-frame {
+    width:100%; aspect-ratio:16/9; border:0;
+    border-radius:8px; margin-top:14px; display:block;
+    background:#000;
+  }
+
+  /* ───── 3D EMBED ───── */
+  .model-frame {
+    width:100%; aspect-ratio:16/10; border:0;
+    border-radius:14px; background:var(--bg-soft);
+    display:block;
+  }
+  .model-caption {
+    color:var(--muted); font-size:.9rem; margin-top:12px;
+  }
+  .model-caption a { color:var(--accent); text-decoration:none; }
+  .model-caption a:hover { text-decoration:underline; }
+
+  footer {
+    text-align:center; padding:46px 0 60px;
+    color:var(--muted); font-size:.82rem;
+  }
+
+  /* gentle load-in */
+  .rise { opacity:0; transform:translateY(20px); animation:rise .6s ease forwards; }
+  @keyframes rise { to { opacity:1; transform:translateY(0); } }
+  .d1{animation-delay:.05s} .d2{animation-delay:.13s} .d3{animation-delay:.21s} .d4{animation-delay:.29s}
+</style>
+</head>
+<body>
+
+<!-- ═══════ HEADER ═══════ -->
+<header>
+  <div class="wrap">
+
+    <!-- profile photo -->
+    <img src="profile.jpg" alt="Aaron Van Sichem De Combe" class="avatar rise d1" />
+
+    <h1 class="rise d2">Aaron Van Sichem De Combe</h1>
+    <div class="role rise d2">Programmer / Student</div>
+
+    <div class="bio rise d3">
+      <p>Digital Arts &amp; Entertainment student looking for a programming
+         internship next winter semester. I'm very interested in every aspect
+         of game development but I'm especially passionate about Graphics
+         Programming, Game Engine Programming, Low Level Programming, Computer
+         Hardware, Math,... and would absolutely love the opportunity to learn
+         more about these fields and start working with something related to
+         this.</p>
+      <p>I've always been outgoing, easygoing, and just in general enjoy being
+         in the presence of people. I'm a musician, I write a little bit of
+         music and play drums, guitar, and piano from when I was little. And I
+         love the creative process behind games (especially story games) so
+         definitely wouldn't mind being part of writing a story/making other
+         creative decisions.</p>
+    </div>
+
+    <div class="links rise d4">
+      <a href="https://github.com/AaronVSDC" target="_blank" rel="noopener" class="btn-primary">GitHub</a>
+      <a href="mailto:aaronvsdc@gmail.com" class="btn-ghost">aaronvsdc@gmail.com</a>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════ PROJECTS ═══════ -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="mono">// Code</div>
+      <h2>Projects</h2>
+    </div>
+
+    <!-- ░ PROJECT 1 — NES Maze ░ -->
+    <article class="project">
+      <h3>NES Maze</h3>
+      <div class="stack mono">6502 Assembly · NES</div>
+      <p>This project was part of the "Retro Console Programming" course given
+         by Tom Tesch, personally one of my favorite courses in the whole
+         major. We worked in a small team of 3 and developed a maze generating
+         algorithm and 2 maze solving algorithms. All running on the NES in
+         6502 assembly.</p>
+      <div class="project-links">
+        <a href="https://github.com/AaronVSDC/NES_MazeGeneration" target="_blank" rel="noopener">↗ GitHub</a>
+      </div>
+    </article>
+
+    <!-- ░ PROJECT 2 — Vulkan Renderer ░ -->
+    <article class="project">
+      <h3>Vulkan Renderer</h3>
+      <div class="stack mono">C++ · Vulkan</div>
+      <p>This project tied as my favorite with the NES project. It was part of
+         the "Graphics Programming 2" course and is a real time 3D renderer
+         written with the Vulkan API. The project uses the following rendering
+         techniques: Depth Buffering, Deferred Rendering with Depth Prepass,
+         Physically Based Lighting using Image-Based Lighting with HDR images,
+         Cook-Torrance BRDF materials (using textures), Post Processing chain
+         with Tone Mapping and it supports point and directional lights.</p>
+      <!-- The repo has render images in ReadMeAssets/ — to show one here,
+           upload it and uncomment a line like:
+           <img src="images/sponza.png" alt="Sponza scene render" /> -->
+      <div class="project-links">
+        <a href="https://github.com/AaronVSDC/VulkanRenderer" target="_blank" rel="noopener">↗ GitHub</a>
+      </div>
+    </article>
+
+    <!-- ░ PROJECT 3 — Software Raytracer ░ -->
+    <article class="project">
+      <h3>Software Raytracer</h3>
+      <div class="stack mono">C++ · CPU Rendering</div>
+      <p>This raytracer was part of our "Graphics Programming 1" course and is
+         a small ray tracer that runs entirely on the cpu. It has the
+         capability to load in .obj's.</p>
+      <div class="project-links">
+        <a href="https://github.com/AaronVSDC/SoftwareRaytracer" target="_blank" rel="noopener">↗ GitHub</a>
+      </div>
+    </article>
+
+    <!-- ░ PROJECT 4 — Theta* ░ -->
+    <article class="project">
+      <h3>Theta* Research Project</h3>
+      <div class="stack mono">C++ · Pathfinding</div>
+      <p>This small project showcases a little bit of pathfinding and the
+         difference between the theta* algorithm and the classic A*. It was
+         part of our "Gameplay Programming" course.</p>
+      <div class="project-links">
+        <a href="https://github.com/AaronVSDC/ResearchProjectGPP" target="_blank" rel="noopener">↗ GitHub</a>
+      </div>
+    </article>
+
+    <!-- ░ PROJECT 5 — Penguin Party ░ -->
+    <article class="project">
+      <h3>Penguin Party</h3>
+      <div class="stack mono">Unity · C#</div>
+      <p>This project was part of the Game Projects course in DAE where we
+         worked in a team of 6 people to develop a small but fun game in
+         unity.</p>
+      <iframe class="video-frame"
+        title="Penguin Party trailer"
+        src="https://www.youtube.com/embed/1LLU2z2JmKo"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+      <div class="project-links" style="margin-top:16px;">
+        <a href="https://ttritar.itch.io/group32penguinparty" target="_blank" rel="noopener">▶ Play on itch.io</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ═══════ 3D WORK ═══════ -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="mono">// 3D</div>
+      <h2>3D Modeling</h2>
+    </div>
+
+    <p style="color:var(--muted); font-size:.96rem; margin-bottom:18px;">
+      I've also done a little bit of 3D modeling in maya for our "3D
+      Fundamentals" course so although I'm not at all an artist, I do know
+      the very basics.
+    </p>
+
+    <!-- Interactive Sketchfab viewer — visitors can drag to rotate it -->
+    <iframe class="model-frame"
+      title="Diorama: Forest Loner"
+      allow="autoplay; fullscreen; xr-spatial-tracking"
+      allowfullscreen
+      src="https://sketchfab.com/models/da518f727f4d4b3daf64b6d67ebe1213/embed?ui_theme=dark">
+    </iframe>
+    <p class="model-caption">
+      <strong>Diorama: Forest Loner</strong> — drag the viewer above to rotate
+      it, or
+      <a href="https://sketchfab.com/3d-models/diorama-forest-loner-dae-da518f727f4d4b3daf64b6d67ebe1213" target="_blank" rel="noopener">open it on Sketchfab</a>.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Aaron Van Sichem De Combe</div>
+</footer>
+
+</body>
+</html>
