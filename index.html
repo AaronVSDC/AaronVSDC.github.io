@@ -51,6 +51,7 @@
     color:var(--accent);
   }
 
+  /* ───── HEADER / PROFILE ───── */
   header { padding:80px 0 52px; text-align:center; }
 
   .avatar {
@@ -92,6 +93,7 @@
   .btn-ghost { border:1px solid var(--line); color:var(--text); }
   .btn-ghost:hover { border-color:var(--accent); color:var(--accent); }
 
+  /* ───── SECTIONS ───── */
   section { padding:38px 0; }
   .section-head { margin-bottom:24px; }
   h2 {
@@ -99,6 +101,7 @@
     font-size:1.5rem; margin-top:6px;
   }
 
+  /* ───── PROJECT CARDS ───── */
   .project {
     position:relative;
     background:var(--card); border:1px solid var(--line);
@@ -161,7 +164,7 @@
 </head>
 <body>
 
-
+<!-- ═══════ HEADER ═══════ -->
 <header>
   <div class="wrap">
 
@@ -234,7 +237,7 @@
     <!-- ░ PROJECT 3 — Software Raytracer ░ -->
     <article class="project">
       <h3>Software Raytracer</h3>
-      <div class="stack mono">C++ · CPU Rendering</div>
+      <div class="stack mono">C++</div>
       <p>This raytracer was part of our "Graphics Programming 1" course and is
          a small ray tracer that runs entirely on the cpu. It has the
          capability to load in .obj's.</p>
@@ -290,7 +293,7 @@
       the very basics.
     </p>
 
-    <!-- Interactive Sketchfab viewer -->
+    <!-- Interactive Sketchfab viewer-->
     <iframe class="model-frame"
       title="Diorama: Forest Loner"
       allow="autoplay; fullscreen; xr-spatial-tracking"
