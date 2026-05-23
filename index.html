@@ -1,10 +1,4 @@
 <!DOCTYPE html>
-<!--
-  ╔═══════════════════════════════════════════════════════════╗
-  ║  PORTFOLIO — one file, no build step.                       ║
-  ║  Customize: search for "EDIT:" and swap the text.           ║
-  ╚═══════════════════════════════════════════════════════════╝
--->
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -25,7 +19,7 @@
     --line:    #2b2b36;
     --text:    #ECECEF;
     --muted:   #8d8d99;
-    --accent:  #FF7A59;   /* EDIT: change this hex to re-theme everything */
+    --accent:  #FF7A59;   
   }
 
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -39,7 +33,6 @@
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
   }
-  /* soft atmospheric glow so the page isn't a flat slab */
   body::before {
     content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
     background:
@@ -58,7 +51,6 @@
     color:var(--accent);
   }
 
-  /* ───── HEADER / PROFILE ───── */
   header { padding:80px 0 52px; text-align:center; }
 
   .avatar {
@@ -100,7 +92,6 @@
   .btn-ghost { border:1px solid var(--line); color:var(--text); }
   .btn-ghost:hover { border-color:var(--accent); color:var(--accent); }
 
-  /* ───── SECTIONS ───── */
   section { padding:38px 0; }
   .section-head { margin-bottom:24px; }
   h2 {
@@ -108,7 +99,6 @@
     font-size:1.5rem; margin-top:6px;
   }
 
-  /* ───── PROJECT CARDS ───── */
   .project {
     position:relative;
     background:var(--card); border:1px solid var(--line);
@@ -142,14 +132,12 @@
   }
   .project-links a:hover { color:var(--accent); }
 
-  /* embedded video (game trailer) */
   .video-frame {
     width:100%; aspect-ratio:16/9; border:0;
     border-radius:8px; margin-top:14px; display:block;
     background:#000;
   }
 
-  /* ───── 3D EMBED ───── */
   .model-frame {
     width:100%; aspect-ratio:16/10; border:0;
     border-radius:14px; background:var(--bg-soft);
@@ -166,7 +154,6 @@
     color:var(--muted); font-size:.82rem;
   }
 
-  /* gentle load-in */
   .rise { opacity:0; transform:translateY(20px); animation:rise .6s ease forwards; }
   @keyframes rise { to { opacity:1; transform:translateY(0); } }
   .d1{animation-delay:.05s} .d2{animation-delay:.13s} .d3{animation-delay:.21s} .d4{animation-delay:.29s}
@@ -174,11 +161,10 @@
 </head>
 <body>
 
-<!-- ═══════ HEADER ═══════ -->
+
 <header>
   <div class="wrap">
 
-    <!-- profile photo -->
     <img src="profile.jpg" alt="Aaron Van Sichem De Combe" class="avatar rise d1" />
 
     <h1 class="rise d2">Aaron Van Sichem De Combe</h1>
@@ -193,8 +179,8 @@
          more about these fields and start working with something related to
          this.</p>
       <p>I've always been outgoing, easygoing, and just in general enjoy being
-         in the presence of people. I'm a musician, I write a little bit of
-         music and play drums, guitar, and piano from when I was little. And I
+         in the presence of people. I'm a musician, play drums, guitar, and 
+         piano from when I was little, and I compose a little aswell. I
          love the creative process behind games (especially story games) so
          definitely wouldn't mind being part of writing a story/making other
          creative decisions.</p>
@@ -240,9 +226,6 @@
          Physically Based Lighting using Image-Based Lighting with HDR images,
          Cook-Torrance BRDF materials (using textures), Post Processing chain
          with Tone Mapping and it supports point and directional lights.</p>
-      <!-- The repo has render images in ReadMeAssets/ — to show one here,
-           upload it and uncomment a line like:
-           <img src="images/sponza.png" alt="Sponza scene render" /> -->
       <div class="project-links">
         <a href="https://github.com/AaronVSDC/VulkanRenderer" target="_blank" rel="noopener">↗ GitHub</a>
       </div>
@@ -307,7 +290,7 @@
       the very basics.
     </p>
 
-    <!-- Interactive Sketchfab viewer — visitors can drag to rotate it -->
+    <!-- Interactive Sketchfab viewer -->
     <iframe class="model-frame"
       title="Diorama: Forest Loner"
       allow="autoplay; fullscreen; xr-spatial-tracking"
